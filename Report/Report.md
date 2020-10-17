@@ -166,6 +166,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fourth_task)
         backgroundThread.start()
+        
+        if (savedInstanceState != null) {
+            secondsElapsed = savedInstanceState.getInt(WATCH_STATE, 0)
+        }
     }
 
     override fun onStart() {
@@ -204,12 +208,6 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putInt(WATCH_STATE, secondsElapsed)
         Log.d(TAG, "onSaveInstanceState called")
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        secondsElapsed = savedInstanceState.getInt(WATCH_STATE)
-        super.onRestoreInstanceState(savedInstanceState)
-        Log.d(TAG, "onRestoreInstanceState called")
     }
 }
 ```
