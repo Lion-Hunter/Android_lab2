@@ -67,42 +67,92 @@ ___
 #### Задача 3. Best-matching resource
 Задание (Вариант 12):
 Конфигурация устройства:
+
 LOCALE_LANG: en
+
 LOCALE_REGION: rUS
+
 SCREEN_SIZE: xlarge
+
 SCREEN_ASPECT: notlong
+
 ROUND_SCREEN: round
+
 ORIENTATION: land
+
 UI_MODE: car
+
 NIGHT_MODE: notnight
+
 PIXEL_DENSITY: tvdpi
+
 TOUCH: finger
+
 PRIMARY_INPUT: nokeys
+
 NAV_KEYS: wheel
+
 PLATFORM_VER: v27
 
 Конфигурация ресурсов:
+
 (default)
+
 rCA-xxhdpi-trackball
+
 xhdpi
+
 fr-notlong-land-v26
+
 en-long-land-finger-v25
+
 xlarge-notlong-notround-vrheadset-dpad-v25
+
 en-xxxhdpi-qwerty
+
 normal-watch-notnight
+
 notround-night-nokeys
+
 en-rFR-xlarge-notlong-round-port-watch-mdpi-v27
+
 rCA
 
-1) На первом шаге сравнивается язык устройства (en) и представленные конфигурации. Те, что не содержат на первой позиции язык, или содержат, но другой - отсекаются. 
+1) На первом шаге сравнивается язык устройства (en) и представленные конфигурации. Те, что содержат другой язык или регион (не en-rUS) - отсекаются. 
  
- (default)
+(default)
+
+rCA-xxhdpi-trackball
+
+xhdpi
+
 en-long-land-finger-v25
+
+xlarge-notlong-notround-vrheadset-dpad-v25
+
 en-xxxhdpi-qwerty
-en-rFR-xlarge-notlong-round-port-watch-mdpi-v27
 
-2) Далее идет сравнение региона устройства (rUS) c оставшимися конфигурациями. Ни одна из представленых конфигураций ресурсов не соответствует заданной, поэтому остается только default.
+normal-watch-notnight
 
+notround-night-nokeys
+
+rCA
+
+2) Далее уничтожаются все конфигурации, не содержащие текущий квалификатор: язык.
+
+(default)
+
+en-long-land-finger-v25
+
+en-xxxhdpi-qwerty
+
+3) Следующий по порядку квалификатор, присутствующий в конфигурациях, Screen aspect. Значение long конфликтует с конфигурацией устройства, поэтому уничтожается.
+
+(default)
+
+en-xxxhdpi-qwerty
+
+4) Последним шагом отсекаютс все конфигурации, не содержащие квалификатор Screen aspect. Остается только конфигурация по умолчанию (default).
 ___
 
 #### Задача 4. Сохранение состояние Activity
@@ -141,10 +191,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fourth_task)
         backgroundThread.start()
-
-        if (savedInstanceState != null) {
-            secondsElapsed = savedInstanceState.getInt(WATCH_STATE, 0)
-        }
     }
 
     override fun onStart() {
