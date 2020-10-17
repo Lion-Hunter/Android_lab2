@@ -68,89 +68,64 @@ ___
 Задание (Вариант 12):
 Конфигурация устройства:
 
+```
 LOCALE_LANG: en
-
 LOCALE_REGION: rUS
-
 SCREEN_SIZE: xlarge
-
 SCREEN_ASPECT: notlong
-
 ROUND_SCREEN: round
-
 ORIENTATION: land
-
 UI_MODE: car
-
 NIGHT_MODE: notnight
-
 PIXEL_DENSITY: tvdpi
-
 TOUCH: finger
-
 PRIMARY_INPUT: nokeys
-
 NAV_KEYS: wheel
-
 PLATFORM_VER: v27
 
 Конфигурация ресурсов:
-
 (default)
-
 rCA-xxhdpi-trackball
-
 xhdpi
-
 fr-notlong-land-v26
-
 en-long-land-finger-v25
-
 xlarge-notlong-notround-vrheadset-dpad-v25
-
 en-xxxhdpi-qwerty
-
 normal-watch-notnight
-
 notround-night-nokeys
-
 en-rFR-xlarge-notlong-round-port-watch-mdpi-v27
-
 rCA
+```
 
 1) На первом шаге сравнивается язык устройства (en) и представленные конфигурации. Те, что содержат другой язык или регион (не en-rUS) - отсекаются. 
  
+ ```
 (default)
-
 rCA-xxhdpi-trackball
-
 xhdpi
-
 en-long-land-finger-v25
-
 xlarge-notlong-notround-vrheadset-dpad-v25
-
 en-xxxhdpi-qwerty
-
 normal-watch-notnight
-
 notround-night-nokeys
-
 rCA
+```
 
 2) Далее уничтожаются все конфигурации, не содержащие текущий квалификатор: язык.
 
+```
 (default)
-
 en-long-land-finger-v25
-
 en-xxxhdpi-qwerty
+```
 
 3) Следующий по порядку квалификатор, присутствующий в конфигурациях, Screen aspect. Значение long конфликтует с конфигурацией устройства, поэтому уничтожается.
 
+```
 (default)
 
 en-xxxhdpi-qwerty
+```
 
 4) Последним шагом отсекаютс все конфигурации, не содержащие квалификатор Screen aspect. Остается только конфигурация по умолчанию (default).
 ___
