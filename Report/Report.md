@@ -97,37 +97,13 @@ en-rFR-xlarge-notlong-round-port-watch-mdpi-v27
 rCA
 ```
 
-1) На первом шаге сравнивается язык устройства (en) и представленные конфигурации. Те, что содержат другой язык или регион (не en-rUS) - отсекаются. 
+1) На первом шаге отсекаются все конфигурации, противоречащие конфигурации устройства: 
  
  ```
 (default)
-rCA-xxhdpi-trackball
-xhdpi
-en-long-land-finger-v25
-xlarge-notlong-notround-vrheadset-dpad-v25
-en-xxxhdpi-qwerty
-normal-watch-notnight
-notround-night-nokeys
-rCA
 ```
 
-2) Далее уничтожаются все конфигурации, не содержащие текущий квалификатор: язык.
-
-```
-(default)
-en-long-land-finger-v25
-en-xxxhdpi-qwerty
-```
-
-3) Следующий по порядку квалификатор, присутствующий в конфигурациях, Screen aspect. Значение long конфликтует с конфигурацией устройства, поэтому уничтожается.
-
-```
-(default)
-
-en-xxxhdpi-qwerty
-```
-
-4) Последним шагом отсекаются все конфигурации, не содержащие квалификатор Screen aspect. Остается только конфигурация по умолчанию (default).
+Остается только конфигурация по умолчанию (default).
 ___
 
 #### Задача 4. Сохранение состояние Activity
